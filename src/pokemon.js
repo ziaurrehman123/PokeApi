@@ -3,7 +3,7 @@ import axios from "axios"
 const Pokemon =()=> {
     const [data, setData]= useState();
     const [num, setNum] = useState("1");
-    const [person, setPerson]= useState(null);
+    const [person, setPerson]= useState("");
     const [name, setName] = useState();
     const [moves, setMoves] = useState();
     useEffect(() => {
@@ -20,7 +20,7 @@ const Pokemon =()=> {
             // console.log(res.data)
             const response=await fetch("https://api.randomuser.me/");
             const data=await response.json();
-            console.log(data.results);
+            console.log(data.results[0].email);
             setPerson(data.results);
 
 
@@ -29,7 +29,7 @@ const Pokemon =()=> {
     },[])
     return (
        <>
-       <h1>Data From Random User API through fetch:{person && <div>{person.email}</div>}</h1>
+       <h1>Data From Random User API through fetch:{person && <div>{person[0].email}</div>}</h1>
        <h1>Your Data: <spna>{data}</spna></h1>
        <h1>You Choose <span style={{color:"red"}}>{num}</span></h1>
        <h1>My name is <span style={{color:"red"}}>{name} </span> and </h1>
