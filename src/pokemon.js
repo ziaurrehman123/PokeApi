@@ -20,7 +20,7 @@ const Pokemon =()=> {
             // console.log(res.data)
             const response=await fetch("https://api.randomuser.me/");
             const data=await response.json();
-            console.log(data.results[0].email);
+            console.log(data.results);
             setPerson(data.results);
 
 
@@ -29,8 +29,11 @@ const Pokemon =()=> {
     },[])
     return (
        <>
-       <h1>Data From Random User API through fetch:{person && <div>{person[0].email}</div>}</h1>
-       <h1>Your Data: <spna>{data}</spna></h1>
+       <h1>Data From Random User API through fetch:</h1>
+       <h1>{person && <div>Name:<span style={{color:"red"}}>{person[0].name.first}</span></div>}</h1>
+       <h1>{person && <div>Email:<span style={{color:"red"}}>{person[0].email}</span></div>}</h1>
+       <h1>{person && <div>Gender:<span style={{color:"red"}}>{person[0].gender}</span></div>}</h1>
+       {/* <h1>Your Data: <spna>{data}</spna></h1>
        <h1>You Choose <span style={{color:"red"}}>{num}</span></h1>
        <h1>My name is <span style={{color:"red"}}>{name} </span> and </h1>
        <h1>I have <span style={{color:"red"}}> {moves} Moves </span>.</h1>
@@ -42,7 +45,7 @@ const Pokemon =()=> {
            <option value="3">3</option>
            <option value="4">4</option>
            <option value="5">5</option>
-       </select>
+       </select> */}
        </>
     )
 }
